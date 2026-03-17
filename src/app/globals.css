@@ -62,6 +62,24 @@
   }
 }
 
+/* Atmospheric field — slow drifting orbs */
+@keyframes atmo-drift-1 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(4%, 3%, 0) scale(1.05); }
+  66% { transform: translate3d(-3%, -2%, 0) scale(0.97); }
+}
+
+@keyframes atmo-drift-2 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  40% { transform: translate3d(-5%, 2%, 0) scale(1.03); }
+  70% { transform: translate3d(3%, -4%, 0) scale(0.98); }
+}
+
+@keyframes atmo-drift-3 {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(2%, -3%, 0) scale(1.04); }
+}
+
 * {
   box-sizing: border-box;
 }

@@ -5,7 +5,11 @@ import Card from "@/components/Card";
 import CTASection from "@/components/CTASection";
 import MouseGlow from "@/components/MouseGlow";
 import ScrollReveal from "@/components/ScrollReveal";
-import StickyPathway from "@/components/StickyPathway";
+import AtmosphericField from "@/components/AtmosphericField";
+import BeltPathway from "@/components/BeltPathway";
+import DMAICStrip from "@/components/DMAICStrip";
+import AccreditationBand from "@/components/AccreditationBand";
+import TransformationFlow from "@/components/TransformationFlow";
 import { specialistCourses } from "@/lib/data/courses";
 import { deliveryModes } from "@/lib/data/delivery";
 import { sectors } from "@/lib/data/clients";
@@ -16,6 +20,8 @@ export default function Home() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden border-b border-border/60 bg-background">
+        {/* Atmospheric energy field */}
+        <AtmosphericField />
         {/* Static ambient gradient */}
         <div
           className="pointer-events-none absolute inset-0"
@@ -63,13 +69,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Trust logos — untouched marquee */}
+      {/* Trust logos — marquee */}
       <LogoStrip />
 
-      {/* Course pathway — sticky storytelling */}
+      {/* Signature: Belt Progression Pathway */}
       <section className="border-t border-border/60 bg-background">
         <div className="mx-auto max-w-6xl px-6 py-20">
-          <StickyPathway />
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Training Pathway"
+              title="From awareness to advanced leadership"
+              description="A structured certification pathway for individuals and teams at every level. Start free, build capability, and lead operational improvement."
+            />
+          </ScrollReveal>
+
+          <ScrollReveal className="mt-12">
+            <BeltPathway />
+          </ScrollReveal>
+
+          <div className="mt-8 text-center">
+            <Link
+              href="/which-course"
+              className="text-sm font-medium text-accent transition-colors hover:text-accent2"
+            >
+              Not sure where to start? &rarr;
+            </Link>
+          </div>
 
           {/* Specialist modules */}
           <ScrollReveal stagger className="mt-14">
@@ -104,8 +129,28 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Signature: DMAIC Framework */}
+      <section className="relative overflow-hidden border-t border-border/60 bg-background-secondary">
+        {/* Atmospheric field on DMAIC section */}
+        <AtmosphericField />
+
+        <div className="relative z-10 mx-auto max-w-6xl px-6 py-20">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Methodology"
+              title="The DMAIC framework"
+              description="Every Six Sigma improvement follows five disciplined phases. This is the engine behind measurable, sustainable operational change."
+            />
+          </ScrollReveal>
+
+          <ScrollReveal className="mt-12">
+            <DMAICStrip />
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Delivery modes */}
-      <section className="border-t border-border/60 bg-background-secondary">
+      <section className="border-t border-border/60 bg-background">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <ScrollReveal>
             <SectionHeader
@@ -128,7 +173,7 @@ export default function Home() {
       </section>
 
       {/* Why Six Sigma SA */}
-      <section className="border-t border-border/60 bg-background">
+      <section className="border-t border-border/60 bg-background-secondary">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <ScrollReveal>
             <SectionHeader
@@ -173,53 +218,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Accreditation band */}
-      <ScrollReveal>
-        <section className="border-t border-border/60 bg-surface">
-          <div className="mx-auto max-w-6xl px-6 py-14">
-            <div className="flex flex-col items-center gap-8 md:flex-row md:justify-between">
-              <div className="text-center md:text-left">
-                <p className="text-xs font-semibold uppercase tracking-widest text-accent">
-                  Accreditation
-                </p>
-                <p className="mt-2 text-lg font-semibold text-text">
-                  Credentials that carry weight
-                </p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-8 md:gap-12">
-                <div className="text-center">
-                  <p className="text-sm font-semibold text-text">CSSC</p>
-                  <p className="text-xs text-muted2">
-                    International recognition
-                  </p>
-                </div>
-                <div className="text-center">
-                  <p className="text-sm font-semibold text-text">
-                    SETA-Structured
-                  </p>
-                  <p className="text-xs text-muted2">Levy claim eligible</p>
-                </div>
-                <div className="text-center">
-                  <p className="text-sm font-semibold text-text">
-                    RPL Pathway
-                  </p>
-                  <p className="text-xs text-muted2">
-                    Recognition of prior learning
-                  </p>
-                </div>
-                <div className="text-center">
-                  <p className="text-sm font-semibold text-text">
-                    Project-Based
-                  </p>
-                  <p className="text-xs text-muted2">
-                    Evidence-led assessment
-                  </p>
-                </div>
-              </div>
+      {/* Signature: Accreditation Authority Band */}
+      <section className="border-t border-border/60 bg-background">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Accreditation"
+              title="Credentials that carry weight"
+              description="Our programmes are backed by internationally recognised standards and structured for South African compliance frameworks."
+            />
+          </ScrollReveal>
+
+          <ScrollReveal stagger>
+            <div className="reveal-stagger">
+              <AccreditationBand />
             </div>
-          </div>
-        </section>
-      </ScrollReveal>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Signature: Training-to-Impact Transformation Flow */}
+      <section className="border-t border-border/60 bg-background-secondary">
+        <div className="mx-auto max-w-6xl px-6 py-20">
+          <ScrollReveal>
+            <SectionHeader
+              eyebrow="Our Approach"
+              title="From training to measurable impact"
+              description="We don't just deliver courses. We embed a system of improvement that moves from learning to sustained operational gains."
+            />
+          </ScrollReveal>
+
+          <ScrollReveal className="mt-12">
+            <TransformationFlow />
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* Sectors served */}
       <section className="border-t border-border/60 bg-background">
