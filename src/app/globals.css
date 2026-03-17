@@ -1,19 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --background-secondary: #0d0d0f;
-  --surface: #111113;
-  --text: #f5f5f5;
-  --muted: #a1a1aa;
-  --muted2: #71717a;
-  --accent: #647F85;
-  --accent2: #B8C4C8;
-  --accent-pressed: #556D72;
-  --accent-soft: rgba(100, 127, 133, 0.14);
-  --accent-border: rgba(184, 196, 200, 0.18);
-  --accent-highlight: #B8C4C8;
-  --border: #27272a;
+  --background: #05070A;
+  --background-secondary: #0A0E14;
+  --surface: #0D1117;
+  --surface-elevated: #121821;
+  --text: #F5F7FA;
+  --muted: rgba(245, 247, 250, 0.72);
+  --muted2: #7C8B95;
+  --accent: #15803D;
+  --accent2: #16A34A;
+  --accent-pressed: #116B33;
+  --accent-soft: rgba(22, 163, 74, 0.12);
+  --accent-border: rgba(22, 163, 74, 0.25);
+  --accent-highlight: #16A34A;
+  --border: rgba(255, 255, 255, 0.08);
   --font-geist-sans: var(--font-geist-sans);
   --font-geist-mono: var(--font-geist-mono);
 }
@@ -22,6 +23,7 @@
   --color-background: var(--background);
   --color-background-secondary: var(--background-secondary);
   --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
   --color-text: var(--text);
   --color-muted: var(--muted);
   --color-muted2: var(--muted2);
@@ -47,6 +49,19 @@
   }
 }
 
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -64,6 +79,40 @@ body {
 }
 
 ::selection {
-  background: rgba(100, 127, 133, 0.3);
+  background: rgba(22, 163, 74, 0.25);
   color: #fff;
+}
+
+/* Scroll reveal — applied via JS IntersectionObserver */
+.reveal {
+  opacity: 0;
+  filter: blur(4px);
+  transform: translateY(20px);
+  will-change: opacity, transform, filter;
+}
+
+.reveal.visible {
+  animation: reveal-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Staggered children */
+.reveal-stagger > .reveal:nth-child(1) { animation-delay: 0ms; }
+.reveal-stagger > .reveal:nth-child(2) { animation-delay: 80ms; }
+.reveal-stagger > .reveal:nth-child(3) { animation-delay: 160ms; }
+.reveal-stagger > .reveal:nth-child(4) { animation-delay: 240ms; }
+.reveal-stagger > .reveal:nth-child(5) { animation-delay: 320ms; }
+.reveal-stagger > .reveal:nth-child(6) { animation-delay: 400ms; }
+.reveal-stagger > .reveal:nth-child(7) { animation-delay: 480ms; }
+.reveal-stagger > .reveal:nth-child(8) { animation-delay: 560ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    filter: none;
+    transform: none;
+    animation: none !important;
+  }
+  .reveal.visible {
+    animation: none !important;
+  }
 }

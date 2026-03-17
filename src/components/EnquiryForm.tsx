@@ -165,7 +165,7 @@ export default function EnquiryForm() {
         <button
           type="submit"
           disabled={submitting}
-          className="inline-flex items-center justify-center rounded-full border border-accent-border bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-accent2 hover:text-black disabled:cursor-not-allowed disabled:opacity-60"
+          className="inline-flex items-center justify-center rounded-full border border-accent-border bg-accent px-6 py-3 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent2 hover:shadow-[0_0_20px_rgba(22,163,74,0.15)] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {submitting ? "Sending..." : "Send Enquiry"}
         </button>

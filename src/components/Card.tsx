@@ -17,7 +17,7 @@ export default function Card({
 }: CardProps) {
   return (
     <div
-      className={`group rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/30 ${className}`}
+      className={`group rounded-2xl border border-border bg-surface p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/25 hover:shadow-[0_4px_24px_rgba(22,163,74,0.06)] ${className}`}
     >
       {number && (
         <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-accent">

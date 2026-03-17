@@ -23,7 +23,7 @@ export default function CTASection({
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface p-10 text-center md:p-16">
           {/* Decorative glow */}
           <div
-            className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/10 blur-3xl"
+            className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/8 blur-3xl"
             aria-hidden="true"
           />
 
@@ -37,14 +37,14 @@ export default function CTASection({
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href={primaryHref}
-                className="rounded-full border border-accent-border bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-accent2 hover:text-black active:bg-accent-pressed"
+                className="rounded-full border border-accent-border bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-all duration-200 hover:scale-[1.02] hover:bg-accent2 hover:shadow-[0_0_20px_rgba(22,163,74,0.15)] active:scale-100 active:bg-accent-pressed"
               >
                 {primaryCTA}
               </Link>
               {secondaryCTA && secondaryHref && (
                 <Link
                   href={secondaryHref}
-                  className="rounded-full border border-border px-7 py-3.5 text-sm font-semibold text-text transition-colors hover:border-accent/40 hover:bg-white/5"
+                  className="rounded-full border border-border px-7 py-3.5 text-sm font-semibold text-text transition-colors hover:border-accent/30 hover:bg-white/5"
                 >
                   {secondaryCTA}
                 </Link>

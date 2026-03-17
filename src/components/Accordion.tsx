@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface AccordionItemProps {
   question: string;
@@ -9,6 +9,14 @@ interface AccordionItemProps {
 
 function AccordionItem({ question, answer }: AccordionItemProps) {
   const [open, setOpen] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current) {
+      setHeight(contentRef.current.scrollHeight);
+    }
+  }, [answer]);
 
   return (
     <div className="border-b border-border/60">
@@ -19,19 +27,37 @@ function AccordionItem({ question, answer }: AccordionItemProps) {
         <span className="pr-4 text-base font-semibold text-text">
           {question}
         </span>
-        <span className="shrink-0 text-muted2 transition-transform duration-200"
+        <span
+          className="shrink-0 text-muted2 transition-transform duration-300"
           style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M10 4v12M4 10h12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+          >
+            <path
+              d="M10 4v12M4 10h12"
+              stroke="currentColor"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+            />
           </svg>
         </span>
       </button>
-      {open && (
+      <div
+        ref={contentRef}
+        className="overflow-hidden transition-all duration-300 ease-out"
+        style={{
+          maxHeight: open ? `${height}px` : "0px",
+          opacity: open ? 1 : 0,
+        }}
+      >
         <div className="pb-5">
           <p className="text-sm leading-relaxed text-muted">{answer}</p>
         </div>
-      )}
+      </div>
     </div>
   );
 }

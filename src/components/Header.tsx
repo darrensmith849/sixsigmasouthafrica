@@ -38,7 +38,7 @@ export default function Header() {
         <div className="hidden md:block">
           <Link
             href="/contact"
-            className="rounded-full border border-accent-border bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-accent2 hover:text-black active:bg-accent-pressed"
+            className="rounded-full border border-accent-border bg-accent px-5 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:bg-accent2 hover:shadow-[0_0_16px_rgba(22,163,74,0.15)] active:bg-accent-pressed"
           >
             Enquire Now
           </Link>
@@ -79,7 +79,7 @@ export default function Header() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="mt-2 inline-block rounded-full border border-accent-border bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-accent2 hover:text-black active:bg-accent-pressed"
+              className="mt-2 inline-block rounded-full border border-accent-border bg-accent px-5 py-2.5 text-center text-sm font-semibold text-white transition-all duration-200 hover:bg-accent2 hover:shadow-[0_0_16px_rgba(22,163,74,0.15)] active:bg-accent-pressed"
             >
               Enquire Now
             </Link>
