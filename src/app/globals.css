@@ -85,26 +85,6 @@
   50% { transform: scale(1.04); opacity: 0.72; }
 }
 
-@keyframes dmaic-target-outer {
-  0%, 100% { transform: scale(1); opacity: 0.8; }
-  50% { transform: scale(1.08); opacity: 1; }
-}
-
-@keyframes dmaic-target-inner {
-  0%, 100% { transform: scale(1); opacity: 0.75; }
-  50% { transform: scale(0.92); opacity: 1; }
-}
-
-@keyframes dmaic-target-dot {
-  0%, 100% { transform: translateY(0); opacity: 0.85; }
-  50% { transform: translateY(-0.8px); opacity: 1; }
-}
-
-@keyframes dmaic-needle-swing {
-  0%, 100% { transform: rotate(-12deg); }
-  50% { transform: rotate(10deg); }
-}
-
 @keyframes dmaic-rise-1 {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
@@ -123,11 +103,6 @@
 @keyframes dmaic-drift {
   0%, 100% { transform: translateX(0); }
   50% { transform: translateX(3px); }
-}
-
-@keyframes dmaic-lens-scan {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(1.5px, -1.5px); }
 }
 
 @keyframes dmaic-scan {
@@ -153,16 +128,6 @@
 @keyframes dmaic-lock {
   0%, 100% { opacity: 0.8; }
   50% { opacity: 1; }
-}
-
-@keyframes dmaic-shield-breathe {
-  0%, 100% { transform: scale(1); opacity: 0.82; }
-  50% { transform: scale(1.04); opacity: 1; }
-}
-
-@keyframes dmaic-check-draw {
-  0%, 100% { transform: translateX(0); opacity: 0.82; }
-  50% { transform: translateX(0.8px); opacity: 1; }
 }
 
 * {
