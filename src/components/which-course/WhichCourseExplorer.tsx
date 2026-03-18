@@ -15,8 +15,7 @@ export default function WhichCourseExplorer({ courses }: WhichCourseExplorerProp
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const tabListRef = useRef<HTMLDivElement>(null);
 
-  const displayIndex = hoveredIndex ?? activeIndex;
-  const displayedCourse = courses[displayIndex];
+  const displayedCourse = courses[activeIndex];
 
   const handleSelect = useCallback((index: number) => {
     setActiveIndex(index);

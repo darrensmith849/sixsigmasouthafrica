@@ -155,7 +155,7 @@ export default function BeltVisualStack({
           <div className="pointer-events-none absolute left-0 right-0 bottom-0 mx-auto w-[85%] rounded-2xl border border-white/[0.08] bg-surface/65 px-5 py-3">
             <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-muted2">Who It Is For</p>
             <p className="mt-1.5 text-xs leading-relaxed text-muted">
-              {courses[displayIndex]?.forWho}
+              {courses[activeIndex]?.forWho}
             </p>
           </div>
         </div>

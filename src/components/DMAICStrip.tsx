@@ -121,7 +121,7 @@ export default function DMAICStrip() {
                   </div>
                 </div>
                 <div className="col-span-5">
-                  <DMAICFrameworkVisual phase={activePhase.phase} />
+                  <DMAICFrameworkVisual phase={activePhase.phase} animated={hoveredIndex !== null} />
                 </div>
               </div>
             </div>

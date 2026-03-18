@@ -80,6 +80,56 @@
   50% { transform: translate3d(2%, -3%, 0) scale(1.04); }
 }
 
+@keyframes dmaic-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.72; }
+}
+
+@keyframes dmaic-rise-1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+@keyframes dmaic-rise-2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes dmaic-rise-3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes dmaic-drift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(3px); }
+}
+
+@keyframes dmaic-scan {
+  0%, 100% { stroke-dashoffset: 0; }
+  50% { stroke-dashoffset: -18; }
+}
+
+@keyframes dmaic-step-1 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-2px); }
+}
+
+@keyframes dmaic-step-2 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+@keyframes dmaic-step-3 {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes dmaic-lock {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -150,6 +200,9 @@ body {
     animation: none !important;
   }
   .content-fade-in {
+    animation: none !important;
+  }
+  svg [style*="animation"] {
     animation: none !important;
   }
   /* Disable all transitions for users who prefer reduced motion */
