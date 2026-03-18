@@ -40,18 +40,18 @@ export default function TransformationFlow() {
 
           <div className="grid grid-cols-4 gap-5">
             {stages.map((stage) => (
-              <div key={stage.step} className="relative text-center min-w-0">
+              <div key={stage.step} className="relative text-center">
                 {/* Step number node */}
                 <div className="relative z-10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-accent/30 bg-surface-elevated">
                   <span className="text-xs font-bold text-accent">{stage.step}</span>
                 </div>
 
                 {/* Card */}
-                <div className="flex h-full w-full flex-col rounded-2xl border border-border bg-surface p-5">
+                <div className="rounded-2xl border border-border bg-surface p-5">
                   <h3 className="mb-2 text-lg font-semibold text-text">
                     {stage.title}
                   </h3>
-                  <p className="mb-4 flex-1 text-sm leading-relaxed text-muted">
+                  <p className="mb-4 text-sm leading-relaxed text-muted">
                     {stage.description}
                   </p>
                   <div className="border-t border-border/60 pt-3">
