@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import DMAICPhaseIcon from "./dmaic/DMAICPhaseIcon";
 import DMAICFrameworkVisual from "./dmaic/DMAICFrameworkVisual";
 
@@ -45,9 +45,24 @@ const phases = [
 export default function DMAICStrip() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [visualPointer, setVisualPointer] = useState({ x: 0, y: 0 });
+  const visualRef = useRef<HTMLDivElement>(null);
 
   const displayIndex = hoveredIndex ?? activeIndex;
   const activePhase = phases[displayIndex];
+
+  function handleVisualMove(e: React.MouseEvent<HTMLDivElement>) {
+    const node = visualRef.current;
+    if (!node) return;
+    const rect = node.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setVisualPointer({ x, y });
+  }
+
+  function resetVisualMove() {
+    setVisualPointer({ x: 0, y: 0 });
+  }
 
   return (
     <div>
@@ -120,8 +135,18 @@ export default function DMAICStrip() {
                     <p className="mt-1 text-sm leading-relaxed text-muted">{activePhase.detail}</p>
                   </div>
                 </div>
-                <div className="col-span-5">
-                  <DMAICFrameworkVisual phase={activePhase.phase} animated={hoveredIndex !== null} />
+                <div
+                  className="col-span-5"
+                  ref={visualRef}
+                  onMouseMove={handleVisualMove}
+                  onMouseLeave={resetVisualMove}
+                >
+                  <DMAICFrameworkVisual
+                    phase={activePhase.phase}
+                    hoverActive={hoveredIndex !== null}
+                    pointerX={visualPointer.x}
+                    pointerY={visualPointer.y}
+                  />
                 </div>
               </div>
             </div>

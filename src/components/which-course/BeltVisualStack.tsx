@@ -41,6 +41,7 @@ export default function BeltVisualStack({
 }: BeltVisualStackProps) {
   const fieldRef = useRef<HTMLDivElement>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [pointer, setPointer] = useState({ x: 0, y: 0 });
   const displayIndex = hoveredIndex ?? activeIndex;
 
   useEffect(() => {
@@ -61,6 +62,7 @@ export default function BeltVisualStack({
     const y = ((e.clientY - rect.top) / rect.height) * 100;
     node.style.setProperty("--mx", `${x}%`);
     node.style.setProperty("--my", `${y}%`);
+    setPointer({ x: x / 100 - 0.5, y: y / 100 - 0.5 });
   }
 
   function resetMove() {
@@ -68,6 +70,7 @@ export default function BeltVisualStack({
     if (!node) return;
     node.style.setProperty("--mx", "50%");
     node.style.setProperty("--my", "50%");
+    setPointer({ x: 0, y: 0 });
   }
 
   return (
@@ -111,6 +114,9 @@ export default function BeltVisualStack({
             const isActive = activeIndex === i;
             const isHovered = hoveredIndex === i;
             const Visual = visuals[i];
+            const movementScale = isDisplayed ? 18 : 10;
+            const offsetX = reducedMotion ? 0 : pointer.x * movementScale * (i % 2 === 0 ? 1 : -1);
+            const offsetY = reducedMotion ? 0 : pointer.y * movementScale * (i < 2 ? 1 : -1);
 
             return (
               <button
@@ -129,13 +135,13 @@ export default function BeltVisualStack({
                   transform: reducedMotion
                     ? "translate3d(0,0,0) scale(1)"
                     : isDisplayed
-                      ? "translate3d(0,0,0) scale(1)"
-                      : "translate3d(0,0,0) scale(0.88)",
+                      ? `translate3d(${offsetX}px, ${offsetY}px, 0) scale(1)`
+                      : `translate3d(${offsetX * 0.75}px, ${offsetY * 0.75}px, 0) scale(0.88)`,
                   opacity: isDisplayed ? 1 : 0.68,
                   zIndex: isDisplayed ? 20 : 10 - i,
                   transition: reducedMotion
                     ? "none"
-                    : "transform 320ms cubic-bezier(0.22,1,0.36,1), opacity 280ms ease",
+                    : "transform 220ms cubic-bezier(0.22,1,0.36,1), opacity 220ms ease",
                 }}
               >
                 <div className="relative">
