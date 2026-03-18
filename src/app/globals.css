@@ -130,6 +130,56 @@
   50% { opacity: 1; }
 }
 
+@keyframes wc-float-soft {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -5px, 0); }
+}
+
+@keyframes wc-float-deep {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -9px, 0); }
+}
+
+@keyframes wc-drift-left {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-5px, 4px, 0); }
+}
+
+@keyframes wc-drift-right {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(5px, -4px, 0); }
+}
+
+@keyframes wc-pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.82; }
+}
+
+.wc-motion-group {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.wc-float-soft {
+  animation: wc-float-soft 2.6s ease-in-out infinite;
+}
+
+.wc-float-deep {
+  animation: wc-float-deep 2.9s ease-in-out infinite;
+}
+
+.wc-drift-left {
+  animation: wc-drift-left 2.7s ease-in-out infinite;
+}
+
+.wc-drift-right {
+  animation: wc-drift-right 2.4s ease-in-out infinite;
+}
+
+.wc-pulse-soft {
+  animation: wc-pulse-soft 2.2s ease-in-out infinite;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -203,6 +253,13 @@ body {
     animation: none !important;
   }
   svg [style*="animation"] {
+    animation: none !important;
+  }
+  .wc-float-soft,
+  .wc-float-deep,
+  .wc-drift-left,
+  .wc-drift-right,
+  .wc-pulse-soft {
     animation: none !important;
   }
   /* Disable all transitions for users who prefer reduced motion */
