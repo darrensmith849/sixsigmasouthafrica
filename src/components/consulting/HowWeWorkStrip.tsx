@@ -101,7 +101,7 @@ export default function HowWeWorkStrip() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const previewIndex = hoveredIndex ?? activeIndex;
-  const active = phases[activeIndex];
+  const visiblePhase = phases[previewIndex];
 
   return (
     <div className="relative overflow-hidden rounded-2xl border border-border/70 bg-background-secondary p-6">
@@ -126,6 +126,8 @@ export default function HowWeWorkStrip() {
                   onClick={() => setActiveIndex(i)}
                   onMouseEnter={() => setHoveredIndex(i)}
                   onMouseLeave={() => setHoveredIndex(null)}
+                  onFocus={() => setHoveredIndex(i)}
+                  onBlur={() => setHoveredIndex(null)}
                   className="text-center"
                 >
                   <div
@@ -147,8 +149,8 @@ export default function HowWeWorkStrip() {
         <div className="grid grid-cols-12 gap-4 rounded-2xl border border-white/[0.08] bg-surface/55 px-5 py-4">
           <div className="col-span-7">
             <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-muted2">Current Phase</p>
-            <h3 className="mt-2 text-lg font-semibold text-text">{active.title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted">{active.description}</p>
+            <h3 className="mt-2 text-lg font-semibold text-text">{visiblePhase.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted">{visiblePhase.description}</p>
           </div>
           <div className="col-span-5">
             <PhaseVisual index={previewIndex} animated={hoveredIndex !== null} />

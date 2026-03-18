@@ -36,26 +36,26 @@ export default function TransformationFlow() {
       <div className="hidden md:block">
         <div className="relative">
           {/* Connecting line */}
-          <div className="absolute top-16 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-px bg-gradient-to-r from-accent/40 via-accent/20 to-accent/40" />
+          <div className="absolute top-14 left-[calc(12.5%+20px)] right-[calc(12.5%+20px)] h-px bg-gradient-to-r from-accent/40 via-accent/20 to-accent/40" />
 
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid grid-cols-4 gap-4">
             {stages.map((stage) => (
-              <div key={stage.step} className="relative text-center">
+              <div key={stage.step} className="relative min-w-0 text-center">
                 {/* Step number node */}
-                <div className="relative z-10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-accent/30 bg-surface-elevated">
+                <div className="relative z-10 mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full border border-accent/30 bg-surface-elevated">
                   <span className="text-xs font-bold text-accent">{stage.step}</span>
                 </div>
 
                 {/* Card */}
-                <div className="rounded-2xl border border-border bg-surface p-5">
-                  <h3 className="mb-2 text-lg font-semibold text-text">
+                <div className="flex h-full flex-col rounded-xl border border-border bg-surface px-4 py-4">
+                  <h3 className="mb-1 text-base font-semibold text-text">
                     {stage.title}
                   </h3>
-                  <p className="mb-4 text-sm leading-relaxed text-muted">
+                  <p className="mb-3 flex-1 text-sm leading-6 text-muted">
                     {stage.description}
                   </p>
-                  <div className="border-t border-border/60 pt-3">
-                    <p className="text-2xl font-semibold text-accent">
+                  <div className="border-t border-border/60 pt-2.5">
+                    <p className="text-xl font-semibold text-accent">
                       {stage.stat}
                     </p>
                     <p className="text-[10px] font-medium uppercase tracking-widest text-muted2">
@@ -75,7 +75,7 @@ export default function TransformationFlow() {
           {/* Vertical line */}
           <div className="absolute left-[23px] top-0 bottom-0 w-px bg-gradient-to-b from-accent/40 via-accent/20 to-accent/40" />
 
-          <div className="space-y-5">
+          <div className="space-y-4">
             {stages.map((stage) => (
               <div key={stage.step} className="relative flex gap-4">
                 {/* Node */}
@@ -84,11 +84,11 @@ export default function TransformationFlow() {
                 </div>
 
                 {/* Card */}
-                <div className="flex-1 rounded-2xl border border-border bg-surface p-4">
+                <div className="flex-1 rounded-xl border border-border bg-surface px-4 py-3.5">
                   <h3 className="mb-1 text-base font-semibold text-text">
                     {stage.title}
                   </h3>
-                  <p className="mb-3 text-sm leading-relaxed text-muted">
+                  <p className="mb-2.5 text-sm leading-6 text-muted">
                     {stage.description}
                   </p>
                   <div className="flex items-baseline gap-2">
