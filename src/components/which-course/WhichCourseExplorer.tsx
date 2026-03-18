@@ -32,10 +32,12 @@ export default function WhichCourseExplorer({ courses }: WhichCourseExplorerProp
 
       switch (e.key) {
         case "ArrowDown":
+        case "ArrowRight":
           e.preventDefault();
           newIndex = (activeIndex + 1) % courses.length;
           break;
         case "ArrowUp":
+        case "ArrowLeft":
           e.preventDefault();
           newIndex = (activeIndex - 1 + courses.length) % courses.length;
           break;
@@ -52,8 +54,6 @@ export default function WhichCourseExplorer({ courses }: WhichCourseExplorerProp
       }
 
       setActiveIndex(newIndex);
-
-      // Focus the newly active tab
       const tabs = tabListRef.current?.querySelectorAll('[role="tab"]');
       if (tabs?.[newIndex]) {
         (tabs[newIndex] as HTMLElement).focus();
@@ -64,48 +64,47 @@ export default function WhichCourseExplorer({ courses }: WhichCourseExplorerProp
 
   return (
     <>
-      {/* Desktop layout */}
-      <div
-        className="hidden lg:grid lg:grid-cols-12 lg:gap-12"
-        onKeyDown={handleKeyDown}
-        ref={tabListRef}
-      >
-        {/* Left column — sticky detail panel */}
-        <div className="lg:col-span-5">
-          <div className="sticky top-28">
-            <div
-              id="course-detail-panel"
-              role="tabpanel"
-              aria-label={displayedCourse.level}
-              key={displayedCourse.slug}
-            >
-              <CourseDetailPanel
-                slug={displayedCourse.slug}
-                level={displayedCourse.level}
-                tagline={displayedCourse.tagline}
-                forWho={displayedCourse.forWho}
-                outcomes={displayedCourse.outcomes}
-                duration={displayedCourse.duration}
-                delivery={displayedCourse.delivery}
-              />
+      <div className="mx-auto max-w-4xl text-center lg:mb-14 lg:text-left">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-muted2">Which Course</p>
+        <h1 className="mt-4 text-3xl font-semibold tracking-tight text-text sm:text-4xl lg:text-5xl">
+          Choose the right certification pathway
+        </h1>
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted lg:mx-0">
+          Compare belt pathways and specialist modules by role, readiness, and expected improvement impact.
+        </p>
+      </div>
+
+      <div className="hidden lg:block" onKeyDown={handleKeyDown} ref={tabListRef}>
+        <div className="grid grid-cols-12 gap-12">
+          <div className="col-span-5">
+            <div className="sticky top-28">
+              <div id="course-detail-panel" role="tabpanel" aria-label={displayedCourse.level} key={displayedCourse.slug}>
+                <CourseDetailPanel
+                  slug={displayedCourse.slug}
+                  level={displayedCourse.level}
+                  tagline={displayedCourse.tagline}
+                  forWho={displayedCourse.forWho}
+                  outcomes={displayedCourse.outcomes}
+                  duration={displayedCourse.duration}
+                  delivery={displayedCourse.delivery}
+                />
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Right column — interactive belt stack */}
-        <div className="lg:col-span-7">
-          <BeltVisualStack
-            courses={courses}
-            activeIndex={activeIndex}
-            hoveredIndex={hoveredIndex}
-            onSelect={handleSelect}
-            onHover={handleHover}
-          />
+          <div className="col-span-7">
+            <BeltVisualStack
+              courses={courses}
+              activeIndex={activeIndex}
+              hoveredIndex={hoveredIndex}
+              onSelect={handleSelect}
+              onHover={handleHover}
+            />
+          </div>
         </div>
       </div>
 
-      {/* Mobile layout */}
-      <div className="lg:hidden">
+      <div className="mt-10 lg:hidden">
         <MobileCourseCards courses={courses} />
       </div>
     </>

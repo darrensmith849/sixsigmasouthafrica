@@ -6,43 +6,32 @@ interface BeltVisualProps {
 
 export default function SpecialistVisual({ isActive, isHovered, className }: BeltVisualProps) {
   const stroke = isActive ? "var(--accent2)" : isHovered ? "var(--muted)" : "var(--muted2)";
-  const opacity = isActive ? 1 : isHovered ? 0.6 : 0.3;
-
-  const lineStyle = (delay: number) => ({
-    strokeDasharray: isActive ? 0 : 200,
-    strokeDashoffset: isActive ? 0 : 200,
-    transition: `stroke-dashoffset 500ms ease-out ${delay}ms, stroke 300ms ease`,
-  });
+  const opacity = isActive ? 1 : isHovered ? 0.68 : 0.36;
 
   return (
     <svg
-      viewBox="0 0 200 200"
+      viewBox="0 0 360 360"
       fill="none"
       className={className}
-      style={{ opacity, transition: "opacity 300ms ease" }}
+      style={{ opacity, transition: "opacity 320ms ease" }}
       aria-hidden="true"
     >
-      {/* Central node */}
-      <circle cx="100" cy="100" r="14" stroke={stroke} strokeWidth="1.5"
-        style={lineStyle(0)} />
-      <circle cx="100" cy="100" r="3" stroke={stroke} strokeWidth="1.5"
-        style={{ transition: "stroke 300ms ease" }} />
+      <rect x="44" y="56" width="272" height="248" rx="26" stroke={stroke} strokeWidth="1.2" strokeOpacity="0.34" />
 
-      {/* Branch 1 — top right */}
-      <line x1="112" y1="90" x2="150" y2="55" stroke={stroke} strokeWidth="1.5" style={lineStyle(60)} />
-      <circle cx="155" cy="50" r="10" stroke={stroke} strokeWidth="1.5" style={lineStyle(100)} />
+      <circle cx="180" cy="180" r="22" stroke={stroke} strokeWidth="1.5" />
+      <circle cx="180" cy="180" r="6" fill="var(--accent2)" fillOpacity={isActive ? "0.6" : "0.22"} />
 
-      {/* Branch 2 — right */}
-      <line x1="114" y1="100" x2="155" y2="100" stroke={stroke} strokeWidth="1.5" style={lineStyle(120)} />
-      <circle cx="165" cy="100" r="10" stroke={stroke} strokeWidth="1.5" style={lineStyle(160)} />
+      <line x1="200" y1="170" x2="260" y2="124" stroke={stroke} strokeWidth="1.3" />
+      <line x1="205" y1="186" x2="278" y2="186" stroke={stroke} strokeWidth="1.3" />
+      <line x1="188" y1="202" x2="226" y2="252" stroke={stroke} strokeWidth="1.3" />
+      <line x1="160" y1="188" x2="106" y2="230" stroke={stroke} strokeWidth="1.3" />
+      <line x1="160" y1="170" x2="110" y2="132" stroke={stroke} strokeWidth="1.3" />
 
-      {/* Branch 3 — bottom */}
-      <line x1="100" y1="114" x2="100" y2="150" stroke={stroke} strokeWidth="1.5" style={lineStyle(180)} />
-      <circle cx="100" cy="160" r="10" stroke={stroke} strokeWidth="1.5" style={lineStyle(220)} />
-
-      {/* Branch 4 — top left */}
-      <line x1="88" y1="90" x2="55" y2="60" stroke={stroke} strokeWidth="1.5" style={lineStyle(240)} />
-      <circle cx="48" cy="53" r="10" stroke={stroke} strokeWidth="1.5" style={lineStyle(280)} />
+      <rect x="252" y="110" width="34" height="28" rx="6" stroke={stroke} strokeWidth="1.4" />
+      <rect x="278" y="170" width="34" height="28" rx="6" stroke={stroke} strokeWidth="1.4" />
+      <rect x="214" y="248" width="34" height="28" rx="6" stroke={stroke} strokeWidth="1.4" />
+      <rect x="82" y="216" width="34" height="28" rx="6" stroke={stroke} strokeWidth="1.4" />
+      <rect x="84" y="118" width="34" height="28" rx="6" stroke={stroke} strokeWidth="1.4" />
     </svg>
   );
 }

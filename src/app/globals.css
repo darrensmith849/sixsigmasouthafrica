@@ -15,8 +15,8 @@
   --accent-border: rgba(22, 163, 74, 0.25);
   --accent-highlight: #16A34A;
   --border: rgba(255, 255, 255, 0.08);
-  --font-geist-sans: var(--font-geist-sans);
-  --font-geist-mono: var(--font-geist-mono);
+  --font-geist-sans: "Segoe UI", "Helvetica Neue", "Arial", system-ui, sans-serif;
+  --font-geist-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
 }
 
 @theme inline {
