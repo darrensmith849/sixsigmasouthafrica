@@ -9,6 +9,7 @@ interface ExplorerCourse {
   slug: string;
   level: string;
   tagline: string;
+  forWho: string;
 }
 
 interface BeltVisualStackProps {
@@ -22,12 +23,14 @@ interface BeltVisualStackProps {
 const visuals = [WhiteBeltVisual, YellowBeltVisual, GreenBeltVisual, BlackBeltVisual, SpecialistVisual];
 
 const positions = [
-  "left-[6%] top-[11%]",
-  "right-[8%] top-[12%]",
-  "left-[4%] bottom-[16%]",
-  "right-[9%] bottom-[18%]",
-  "right-[38%] top-[4%]",
+  "left-[6%] top-[12%]",
+  "right-[14%] top-[8%]",
+  "left-[10%] bottom-[16%]",
+  "right-[7%] bottom-[14%]",
+  "left-[36%] top-[30%]",
 ];
+
+const sizes = ["h-[180px] w-[180px]", "h-[180px] w-[180px]", "h-[180px] w-[180px]", "h-[180px] w-[180px]", "h-[230px] w-[230px]"];
 
 export default function BeltVisualStack({
   courses,
@@ -127,8 +130,8 @@ export default function BeltVisualStack({
                     ? "translate3d(0,0,0) scale(1)"
                     : isDisplayed
                       ? "translate3d(0,0,0) scale(1)"
-                      : "translate3d(0,0,0) scale(0.82)",
-                  opacity: isDisplayed ? 1 : 0.46,
+                      : "translate3d(0,0,0) scale(0.88)",
+                  opacity: isDisplayed ? 1 : 0.68,
                   zIndex: isDisplayed ? 20 : 10 - i,
                   transition: reducedMotion
                     ? "none"
@@ -143,11 +146,18 @@ export default function BeltVisualStack({
                       transition: reducedMotion ? "none" : "box-shadow 320ms ease",
                     }}
                   />
-                  <Visual isActive={isDisplayed} isHovered={isHovered} className="h-[230px] w-[230px]" />
+                  <Visual isActive={isDisplayed} isHovered={isHovered} className={sizes[i]} />
                 </div>
               </button>
             );
           })}
+
+          <div className="pointer-events-none absolute left-0 right-0 bottom-0 mx-auto w-[85%] rounded-2xl border border-white/[0.08] bg-surface/65 px-5 py-3">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-muted2">Who It Is For</p>
+            <p className="mt-1.5 text-xs leading-relaxed text-muted">
+              {courses[displayIndex]?.forWho}
+            </p>
+          </div>
         </div>
 
         <div className="mt-2 grid grid-cols-5 gap-2 border-t border-white/[0.06] pt-6">

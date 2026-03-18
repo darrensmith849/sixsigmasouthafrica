@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import DMAICPhaseIcon from "./dmaic/DMAICPhaseIcon";
+import DMAICFrameworkVisual from "./dmaic/DMAICFrameworkVisual";
 
 const phases = [
   {
@@ -87,7 +88,6 @@ export default function DMAICStrip() {
                           borderColor: isDisplayed ? "var(--accent-border)" : "rgba(255,255,255,0.16)",
                           background: isDisplayed ? "rgba(18,24,33,0.95)" : "rgba(13,17,23,0.75)",
                           boxShadow: isDisplayed ? "0 0 26px rgba(22,163,74,0.16)" : "none",
-                          transform: isDisplayed ? "translateY(-3px)" : "translateY(0)",
                         }}
                       >
                         <span className={`text-xl font-bold ${isDisplayed ? "text-accent2" : "text-muted2"}`}>{phase.letter}</span>
@@ -109,14 +109,19 @@ export default function DMAICStrip() {
             </div>
 
             <div className="rounded-2xl border border-white/[0.08] bg-surface/55 px-6 py-5">
-              <div className="flex items-start gap-4">
-                <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-accent/35 text-sm font-bold text-accent2">
+              <div className="grid grid-cols-12 gap-4">
+                <div className="col-span-7 flex items-start gap-4">
+                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-accent/35 text-sm font-bold text-accent2">
                   {activePhase.letter}
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-muted2">Active DMAIC Phase</p>
+                    <h3 className="mt-2 text-lg font-semibold text-text">{activePhase.name}</h3>
+                    <p className="mt-1 text-sm leading-relaxed text-muted">{activePhase.detail}</p>
+                  </div>
                 </div>
-                <div className="min-w-0">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-muted2">Active DMAIC Phase</p>
-                  <h3 className="mt-2 text-lg font-semibold text-text">{activePhase.name}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-muted">{activePhase.detail}</p>
+                <div className="col-span-5">
+                  <DMAICFrameworkVisual phase={activePhase.phase} />
                 </div>
               </div>
             </div>

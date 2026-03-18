@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import SectionHeader from "@/components/SectionHeader";
 import Card from "@/components/Card";
 import CTASection from "@/components/CTASection";
+import HowWeWorkStrip from "@/components/consulting/HowWeWorkStrip";
 
 export const metadata: Metadata = {
   title: "Consulting",
@@ -61,52 +62,7 @@ export default function ConsultingPage() {
             description="A structured, low-risk approach to operational improvement."
           />
 
-          <div className="grid grid-cols-1 gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-5">
-            {[
-              {
-                step: "01",
-                title: "Diagnose",
-                description:
-                  "Identify the bottleneck, map the process, define the improvement target.",
-              },
-              {
-                step: "02",
-                title: "Scope",
-                description:
-                  "Narrow to the highest-value use case with the clearest ROI path.",
-              },
-              {
-                step: "03",
-                title: "Execute",
-                description:
-                  "Deploy the improvement project with structured coaching and rigour.",
-              },
-              {
-                step: "04",
-                title: "Embed",
-                description:
-                  "Build the standards, routines, and governance that make the change permanent.",
-              },
-              {
-                step: "05",
-                title: "Sustain",
-                description:
-                  "Monitor, review, and extend over time with ongoing retainer support.",
-              },
-            ].map((phase) => (
-              <div key={phase.step} className="bg-surface p-6 text-center">
-                <span className="mb-3 inline-block text-xs font-semibold uppercase tracking-widest text-accent">
-                  {phase.step}
-                </span>
-                <h3 className="mb-2 text-base font-semibold text-text">
-                  {phase.title}
-                </h3>
-                <p className="text-sm leading-relaxed text-muted">
-                  {phase.description}
-                </p>
-              </div>
-            ))}
-          </div>
+          <HowWeWorkStrip />
         </div>
       </section>
 
